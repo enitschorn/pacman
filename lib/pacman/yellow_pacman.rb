@@ -26,8 +26,9 @@ module Pacman
 
     def move
       case @direction
-      when 'NORTH' then move_north
-      when 'SOUTH' then move_south
+      when 'NORTH'  then move_north
+      when 'SOUTH'  then move_south
+      when 'EAST'   then move_east
       end
     end
   end
