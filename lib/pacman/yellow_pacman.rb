@@ -2,9 +2,10 @@ module Pacman
   class YellowPacman
     attr_reader :east, :north
 
-    def initialize(east = 0, north = 0)
-      @east   = east
-      @north  = north
+    def initialize(east = 0, north = 0, direction = 'NORTH')
+      @east      = east
+      @north     = north
+      @direction = direction
     end
 
     def move_east
@@ -21,6 +22,10 @@ module Pacman
 
     def move_south
       @north -= 1
+    end
+
+    def move
+      move_north
     end
   end
 end
