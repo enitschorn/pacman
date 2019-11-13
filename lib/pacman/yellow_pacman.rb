@@ -41,5 +41,14 @@ module Pacman
       when 'WEST'   then 'SOUTH'
       end
     end
+
+    def turn_right
+      @direction = case @direction
+      when 'NORTH'  then 'EAST'
+      when 'SOUTH'  then 'WEST'
+      when 'EAST'   then 'SOUTH'
+      when 'WEST'   then 'NORTH'
+      end
+    end
   end
 end
