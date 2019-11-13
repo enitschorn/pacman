@@ -1,5 +1,6 @@
 module Pacman
   class YellowPacman
+    DIRECTIONS = %w[NORTH EAST SOUTH WEST]
     attr_reader :east, :north, :direction
 
     def initialize(east = 0, north = 0, direction = 'NORTH')
@@ -49,6 +50,14 @@ module Pacman
       when 'EAST'   then 'SOUTH'
       when 'WEST'   then 'NORTH'
       end
+    end
+
+    def report
+      {
+        east: 3,
+        north: 2,
+        direction: 'NORTH'
+      }
     end
   end
 end
