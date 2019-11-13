@@ -1,9 +1,10 @@
 require 'spec_helper'
 
 RSpec.describe Pacman::YellowPacman do
-  subject { Pacman::YellowPacman.new(0) }
 
   context 'move' do
+    subject { Pacman::YellowPacman.new(0) }
+
     it 'moves 3 spaces east' do
       3.times { subject.move_east }
       expect(subject.east).to eq(3)
@@ -42,6 +43,15 @@ RSpec.describe Pacman::YellowPacman do
     it 'moves 4 spaces south' do
       4.times { subject.move_south }
       expect(subject.north).to eq(-4)
+    end
+  end
+
+  context 'when facing north' do
+    subject { Pacman::YellowPacman.new(0, 0, 'NORTH') }
+    
+    it 'moves north' do
+      subject.move
+      expect(subject.north).to eq(1)
     end
   end
 end
