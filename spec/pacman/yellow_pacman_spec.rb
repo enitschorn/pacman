@@ -121,4 +121,16 @@ RSpec.describe Pacman::YellowPacman do
       expect(subject.direction).to eq('NORTH')
     end
   end
+
+  context 'report' do
+    subject { Pacman::YellowPacman.new(3, 2, 'NORTH') }
+
+    it 'reports the current position and direction of pacman' do
+      expect(subject.report).to eq({
+        east: 3,
+        north: 2,
+        direction: 'NORTH'
+      })
+    end
+  end
 end
