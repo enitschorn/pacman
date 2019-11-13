@@ -63,4 +63,13 @@ RSpec.describe Pacman::YellowPacman do
       expect(subject.north).to eq(-1)
     end
   end
+
+  context 'when facing east' do
+    subject { Pacman::YellowPacman.new(0, 0, 'EAST') }
+    
+    it 'moves east' do
+      subject.move
+      expect(subject.east).to eq(1)
+    end
+  end
 end
