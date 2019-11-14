@@ -1,8 +1,11 @@
 module Pacman
   class Command
     def process(command)
-      command =~ /\APLACE (?<east>\d),(?<north>\d),(?<direction>\w+)\z/
-      [:place, $1.to_i, $2.to_i, $3]
+      if match = /\APLACE (?<east>\d),(?<north>\d),(?<direction>\w+)\z/.match(command)
+        [:place, match[:east].to_i, match[:north].to_i, match[:direction]]
+      else
+        [:invalid, command]
+      end
     end
   end
 end
