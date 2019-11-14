@@ -15,4 +15,12 @@ RSpec.describe Pacman::Command do
       expect(command).to eq([:invalid, 'PLACE 2, 2, NORTH'])
     end
   end
+
+  context 'MOVE' do
+    it 'processes the command' do
+      command, *args = subject.process('MOVE')
+      expect(command).to eq(:move)
+      expect(args).to be_empty
+    end
+  end
 end
