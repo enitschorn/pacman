@@ -10,6 +10,8 @@ module Pacman
         [:turn_left]
       when /\ARIGHT\z/
         [:turn_right]
+      when /\AREPORT\z/
+        [:report]
       else
         [:invalid, command]
       end
