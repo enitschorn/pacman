@@ -8,6 +8,8 @@ module Pacman
         [:move]
       when /\ALEFT\z/
         [:turn_left]
+      when /\ARIGHT\z/
+        [:turn_right]
       else
         [:invalid, command]
       end
