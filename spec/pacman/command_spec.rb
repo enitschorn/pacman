@@ -9,5 +9,10 @@ RSpec.describe Pacman::Command do
       expect(command).to eq(:place)
       expect(args).to eq([2, 2, 'NORTH'])
     end
+
+    it 'returns invalid for an invalid PLACE command' do
+      command = subject.process('PLACE 2, 2, NORTH')
+      expect(command).to eq([:invalid, 'PLACE 2, 2, NORTH'])
+    end
   end
 end
