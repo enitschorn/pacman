@@ -39,4 +39,12 @@ RSpec.describe Pacman::Command do
       expect(args).to be_empty
     end
   end
+
+  context 'REPORT' do
+    it 'processes a REPORT command' do
+      command, *args = subject.process('REPORT')
+      expect(command).to eq(:report)
+      expect(args).to be_empty
+    end
+  end
 end
