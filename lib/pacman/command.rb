@@ -6,6 +6,8 @@ module Pacman
         [:place, $~[:east].to_i, $~[:north].to_i, $~[:direction]]
       when /\AMOVE\z/
         [:move]
+      when /\ALEFT\z/
+        [:turn_left]
       else
         [:invalid, command]
       end
