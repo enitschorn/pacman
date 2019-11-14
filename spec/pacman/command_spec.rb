@@ -31,4 +31,12 @@ RSpec.describe Pacman::Command do
       expect(args).to be_empty
     end
   end
+
+  context 'RIGHT' do
+    it 'processes a RIGHT command' do
+      command, *args = subject.process('RIGHT')
+      expect(command).to eq(:turn_right)
+      expect(args).to be_empty
+    end
+  end
 end
