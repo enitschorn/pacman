@@ -17,9 +17,17 @@ RSpec.describe Pacman::Command do
   end
 
   context 'MOVE' do
-    it 'processes the command' do
+    it 'processes a MOVE command' do
       command, *args = subject.process('MOVE')
       expect(command).to eq(:move)
+      expect(args).to be_empty
+    end
+  end
+
+  context 'LEFT' do
+    it 'processes a LEFT command' do
+      command, *args = subject.process('LEFT')
+      expect(command).to eq(:turn_left)
       expect(args).to be_empty
     end
   end
