@@ -1,7 +1,6 @@
 # Pacman
 
 ## Table of contents:
-
 * [Description](./README.md#description)
   * [Constraints](./README.md#constraints)
   * [Example Input and Output](./README.md#example-input-and-output)
@@ -15,7 +14,6 @@
 
 
 ## Description
-
 * The application is a simulation of Pacman moving on in a grid, of dimensions 5 units x 5 units.
 * There are no other obstructions on the grid.
 * Pacman is free to roam around the surface of the grid, but must be prevented from moving off the grid. Any movement that would result in Pacman moving off the grid must  be prevented, however further valid movement commands must still be allowed.
@@ -44,7 +42,6 @@ REPORT
 * Provide test data to exercise the application.
 
 ### Constraints
-
 * Pacman must not move off the grid during movement. This also includes the initial placement of Pacman.
 * Any move that would cause Pacman to fall must be ignored.
 
@@ -96,7 +93,6 @@ Output: 3,3,NORTH
 * Proving your code works via unit testing is highly encouraged
 
 ## Setup
-
 1. Make sure you have Ruby 2.6.4 installed in your machine. If you need help installing Ruby, take a look at the [official installation guide](https://www.ruby-lang.org/en/documentation/installation/).
 
 2. Install the [bundler gem](http://bundler.io/) by running:
@@ -119,16 +115,24 @@ And you're ready to go!
 
 ### Running the app
 ```ruby app.rb```
+
 To modify the commands input, you can update the commands.txt file.
 
 ### Running the tests
-```bundle exec rspec```
-or
-```rspec```
+```bundle exec rspec``` or ```rspec```
 
 ### Considerations about the development
+This application is composed of the `Pacman` module and the `YellowPacman`, `Grid`, `Command`, `Simulator`, `CLI` and `Version` classes.
+
+- `YellowPacman` responsible for pacman's behaviour when moving on the grid (move, turn_left, turn_right) and reporting pacman's current position.
+- `Grid` marks the grid (5x5) on which pacman moves and checks if the pacman's position is valid or not.
+- `Command` processes the right commands and executes the corresponding methods
+- `Simulator` receives the commands from the CLI class and calls the corresponding methods, also places pacman on the grid in its initial position.
+- `CLI` loads the commands from the input file and sends the commands to the simulator.
+- `Pacman` I created this module just in case I want to expand the app, add another pacman, for example, so it will be easier to implement a hierarchy and inheritance structure.
+- `Version` shows the version of the pacman.
 
 
 ### Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/pacman.
+Bug reports and pull requests are welcome on GitHub at https://github.com/enitschorn/pacman.
