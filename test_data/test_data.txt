@@ -2,7 +2,7 @@ Here are some test scenarios that can be performed on the app.
 
 Each test scenario is a list of commands that should be inputted in sequence, and an expected result.
 
-Each scenario assumes that the app hasn't been started yet, and that no commands were issued yet.
+Each scenario assumes that the app has been started already, and that the commands were in the commands.txt file.
 
 ---------------------
 TEST 1: ignores commands before pacman is put into place
@@ -13,7 +13,7 @@ LEFT
 RIGHT
 REPORT
 
-result: output will be 'not in place', showing that the commands had no effect.
+result: commands will be ignored and pacman simulator won't process any of the commands.
 
 ---------------------
 
@@ -22,7 +22,7 @@ commands:
 PLACE 1,2,NORTH
 REPORT
 
-expected result: '1,2,NORTH', pacman is in the correct position
+expected result: 'Pacman is currently at (1, 2) and facing NORTH.', pacman is in the correct position.
 
 ---------------------
 
@@ -31,7 +31,7 @@ commands:
 PLACE 9,9,NORTH
 REPORT
 
-expected result: 'not in place', invalid position was ignored
+expected result: 'Please place pacman on a valid starting position.', invalid position was ignored.
 
 ---------------------
 
@@ -62,7 +62,7 @@ REPORT
 LEFT
 REPORT
 
-expected result: output will show the pacman facing West, South, East and North again, sequentially
+expected result: output will show the pacman facing West, South, East and North again, sequentially.
 
 ---------------------
 
@@ -81,12 +81,12 @@ MOVE
 RIGHT
 REPORT
 
-expected result: output will be:
+expected result:
 
-1,2,EAST
-2,2,SOUTH
-2,1,WEST
-1,1,NORTH
+'Pacman is currently at (1, 2) and facing EAST.'
+'Pacman is currently at (2, 2) and facing SOUTH.'
+'Pacman is currently at (2, 1) and facing WEST.'
+'Pacman is currently at (1, 1) and facing NORTH.'
 
 showing that the pacman walked 1 unit north, 1 unit east, 1 unit south and 1 unit west, making a lap and ending up at the beginning
 
@@ -102,7 +102,7 @@ MOVE
 MOVE
 REPORT
 
-expected result: pacman will be at '4,4,NORTH', ignoring commands to move further
+expected result: 'Pacman is currently at (4, 4) and facing NORTH.', ignoring commands to move further.
 
 ---------------------
 
@@ -113,4 +113,8 @@ TAKEOFF
 KILL
 REPORT
 
-expected result: 'not in place', commands will be ignored, no errors will show
+expected result: 
+
+Sorry, but 'AUTODESTRUCT' is an invalid command. Please check the commands file and reenter the correct command.
+Sorry, but 'TAKEOFF' is an invalid command. Please check the commands file and reenter the correct command.
+Sorry, but 'KILL' is an invalid command. Please check the commands file and reenter the correct command.
