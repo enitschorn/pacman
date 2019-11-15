@@ -59,5 +59,14 @@ module Pacman
         direction: direction
       }
     end
+
+    def next_move
+      case @direction
+      when 'NORTH'  then [@east, @north + 1]
+      when 'SOUTH'  then [@east, @north - 1]
+      when 'EAST'   then [@east + 1, @north]
+      when 'WEST'   then [@east - 1, @north]
+      end
+    end
   end
 end
