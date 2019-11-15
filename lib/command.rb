@@ -2,15 +2,15 @@ module Pacman
   class Command
     def process(command)
       case command
-      when /\APLACE (?<x>\d),(?<y>\d),(?<direction>\w+)\Z/
+      when /\APLACE (?<x>\d),(?<y>\d),(?<direction>\w+)\z/
         [:place, $~[:x].to_i, $~[:y].to_i, $~[:direction]]
-      when /\AMOVE\Z/
+      when /\AMOVE\z/
         [:move]
-      when /\ALEFT\Z/
+      when /\ALEFT\z/
         [:turn_left]
-      when /\ARIGHT\Z/
+      when /\ARIGHT\z/
         [:turn_right]
-      when /\AREPORT\Z/
+      when /\AREPORT\z/
         [:report]
       else
         [:invalid, command]
