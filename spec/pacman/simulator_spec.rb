@@ -84,7 +84,7 @@ RSpec.describe Pacman::Simulator do
 
     it 'cannot go past the grid\'s boundaries' do
       subject.move
-      message = "Pacman is currently at (0, 4) and facing NORTH\n"
+      message = "Pacman is currently at (0, 4) and facing NORTH.\n"
       expect { subject.report }.to output(message).to_stdout
     end 
   end
