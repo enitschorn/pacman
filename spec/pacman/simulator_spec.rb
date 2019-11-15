@@ -18,13 +18,42 @@ RSpec.describe Pacman::Simulator do
       subject.place(5, 5, 'NORTH')
       expect(subject.pacman).to be_nil
     end
+
+    it 'does not have pacman placed by default' do
+      expect(subject.pacman_placed?).to eq(false)
+    end
+
+    it 'does not move pacman' do
+      expect { subject.move }.to_not raise_error
+    end
+
+    it 'turning pacman left does not raise an error' do
+      expect { subject.turn_left }.to_not raise_error
+    end
+
+    it 'turning pacman right does not raise an error' do
+      expect { subject.turn_right }.to_not raise_error
+    end
+
+    it 'asking pacman to report its position does not raise an error' do
+      expect { subject.report }.to_not raise_error
+    end
+
+    it 'tells us when a command is invalid' do
+      message = "Sorry, but 'PLACE 1, 2, NORTH' is an invalid command. Please check the commands file and reenter the correct command.\n"
+      expect { subject.invalid('PLACE 1, 2, NORTH') }.to output(message).to_stdout
+    end
   end
 
   context 'when pacman has been placed' do
-    let(:pacman) { instance_double(Pacman::YellowPacman) }
+    let(:pacman) { instance_double(Pacman::YellowPacman, next_move: [0, 0]) }
 
     before do
       allow(subject).to receive(:pacman).and_return(pacman)
+    end
+
+    it 'has placed pacman' do
+      expect(subject.pacman_placed?).to eq(true)
     end
 
     it 'tells pacman to move' do
@@ -46,5 +75,17 @@ RSpec.describe Pacman::Simulator do
       expect(pacman).to receive(:report) { { east: 2, north: 4, direction: 'EAST'} }
       subject.report
     end
+  end
+
+  context 'pacman placed at grid boundaries' do
+    before do
+      subject.place(0, 4, 'NORTH')
+    end
+
+    it 'cannot go past the grid\'s boundaries' do
+      subject.move
+      message = "Pacman is currently at (0, 4) and facing NORTH\n"
+      expect { subject.report }.to output(message).to_stdout
+    end 
   end
 end
