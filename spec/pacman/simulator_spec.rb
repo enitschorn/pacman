@@ -43,7 +43,7 @@ RSpec.describe Pacman::Simulator do
     end
 
     it 'tells pacman to report its current position' do
-      expect(pacman).to receive(:report)
+      expect(pacman).to receive(:report) { { east: 2, north: 4, direction: 'EAST'} }
       subject.report
     end
   end

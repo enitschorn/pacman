@@ -54,9 +54,9 @@ module Pacman
 
     def report
       {
-        east: 3,
-        north: 2,
-        direction: 'NORTH'
+        east: east,
+        north: north,
+        direction: direction
       }
     end
   end
