@@ -38,11 +38,6 @@ RSpec.describe Pacman::Simulator do
     it 'asking pacman to report its position does not raise an error' do
       expect { subject.report }.to_not raise_error
     end
-
-    it 'tells us when a command is invalid' do
-      message = "Sorry, but 'PLACE 1, 2, NORTH' is an invalid command. Please check the commands file and reenter the correct command.\n"
-      expect { subject.invalid('PLACE 1, 2, NORTH') }.to output(message).to_stdout
-    end
   end
 
   context 'when pacman has been placed' do
@@ -87,5 +82,12 @@ RSpec.describe Pacman::Simulator do
       message = "Pacman is currently at (0, 4) and facing NORTH.\n"
       expect { subject.report }.to output(message).to_stdout
     end 
+  end
+
+  context 'invalid command' do
+    it 'tells us when a command is invalid' do
+      message = "Sorry, but 'PLACE 1, 2, NORTH' is an invalid command. Please check the commands file and reenter the correct command.\n"
+      expect { subject.invalid('PLACE 1, 2, NORTH') }.to output(message).to_stdout
+    end
   end
 end
