@@ -25,7 +25,8 @@ module Pacman
     end
 
     def report
-      pacman.report
+      position = pacman.report
+      puts "Pacman is currently at (#{position[:east]}, #{position[:north]}) and facing #{position[:direction]}"
     end
   end
 end
