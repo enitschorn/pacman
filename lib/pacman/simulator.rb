@@ -5,15 +5,17 @@ module Pacman
     def initialize(grid)
       @grid = grid
     end
-    
-    def pacman_placed?
-      !pacman.nil?
-    end
 
     def place(east, north, direction)
-      return unless @grid.valid_positioning?(east, north)
+      if @grid.valid_positioning?(east, north)
+        @pacman = YellowPacman.new(east, north, direction)
+      else
+        puts 'Please place pacman on a valid starting position.'
+      end
+    end
 
-      @pacman = YellowPacman.new(east, north, direction)
+    def pacman_placed?
+      !pacman.nil?
     end
 
     def move
